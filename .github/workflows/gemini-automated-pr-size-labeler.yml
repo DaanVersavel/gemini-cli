@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  triage-pr:
+  label-pr:
     timeout-minutes: 5
     if: ${{ github.repository == 'DaanVersavel/gemini-cli' }} # Adapt to your repo
     permissions:
@@ -42,7 +42,7 @@ jobs:
               "coreTools": [
                 "run_shell_command(gh pr diff)",
                 "run_shell_command(gh pr edit)",
-                "run_shell_command(gh pr comment)"
+                "run_shell_command(gh pr comment)",
                 "run_shell_command(gh pr view)"
               ],
               "sandbox": false
