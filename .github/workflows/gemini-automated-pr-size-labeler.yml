@@ -83,6 +83,7 @@ jobs:
                - **Remove any previous `review/*` labels if they no longer apply, similar to the size label process.**
                - Apply the determined `review/*` label to the pull request using:
                  `gh pr edit ${{ env.PR_NUMBER }} --repo ${{ github.repository }} --add-label "your-complexity-label"`
+               - If the label is `review/involved` add a comment to the pull request explaining why using  `gh pr comment ${{ env.PR_NUMBER }} --repo ${{ github.repository }} --body "Your comment here"`
 
             4. Handle Overly Large Pull Requests (`size/xl`):
                - **Conditional Check:** If the pull request has been labeled `size/xl` (i.e., > 1000 lines of code changed) in Step 2, proceed to the next sub-step.
@@ -110,4 +111,3 @@ jobs:
             - Utilize `gh CLI`: Interact with GitHub using the `gh` command-line tool for diffing, label management, and commenting.
             - Execute commands strictly as described in the steps. Do not invent new commands.
             - In no case should you change other pull request that are not the one you are working on. Which can be found by using env.PR_NUMBER
-            - Add logging on why you choose wich label on the github action logs.
