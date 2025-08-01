@@ -7,7 +7,7 @@ on:
 jobs:
   triage-pr:
     timeout-minutes: 5
-    if: ${{ github.repository == 'google-gemini/gemini-cli' }} # Adapt to your repo
+    if: ${{ github.repository == 'DaanVersavel/gemini-cli' }} # Adapt to your repo
     permissions:
       pull-requests: write 
       contents: read 
