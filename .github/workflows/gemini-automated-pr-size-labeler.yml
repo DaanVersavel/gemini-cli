@@ -43,6 +43,7 @@ jobs:
                 "run_shell_command(gh pr diff)",
                 "run_shell_command(gh pr edit)",
                 "run_shell_command(gh pr comment)"
+                "run_shell_command(gh pr view)"
               ],
               "sandbox": false
             }
