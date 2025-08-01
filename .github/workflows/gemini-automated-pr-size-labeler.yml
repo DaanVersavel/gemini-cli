@@ -44,10 +44,6 @@ jobs:
                 "run_shell_command(gh pr edit)",
                 "run_shell_command(gh pr comment)"
               ],
-              # "telemetry": {
-              #   "enabled": true,
-              #   "target": "gcp"
-              # },
               "sandbox": false
             }
           prompt: |
