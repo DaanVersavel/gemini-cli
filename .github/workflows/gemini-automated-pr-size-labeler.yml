@@ -110,3 +110,4 @@ jobs:
             - Utilize `gh CLI`: Interact with GitHub using the `gh` command-line tool for diffing, label management, and commenting.
             - Execute commands strictly as described in the steps. Do not invent new commands.
             - In no case should you change other pull request that are not the one you are working on. Which can be found by using env.PR_NUMBER
+            - Add logging on why you choose wich label on the github action logs.
