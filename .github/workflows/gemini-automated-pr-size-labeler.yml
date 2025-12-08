@@ -21,13 +21,13 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
-      - name: 'Generate GitHub App Token'
-        id: 'generate_token'
-        uses: 'actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e' # v2
-        with:
-          app-id: '${{ secrets.APP_ID }}'
-          private-key: '${{ secrets.PRIVATE_KEY }}'
-          permission-issues: 'write'
+      # - name: 'Generate GitHub App Token'
+      #   id: 'generate_token'
+      #   uses: 'actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e' # v2
+      #   with:
+      #     app-id: '${{ secrets.APP_ID }}'
+      #     private-key: '${{ secrets.PRIVATE_KEY }}'
+      #     permission-pull-requests: 'write'
 
       - name: 'Run Gemini PR size and complexity labeller'
         uses: 'google-github-actions/run-gemini-cli@635ea06c806bdd9d252334d92222e72674a653e8' # Use the specific commit SHA
@@ -36,13 +36,12 @@ jobs:
           PR_NUMBER: '${{ github.event.pull_request.number }}'
           REPOSITORY: '${{ github.repository }}'
         with:
-          gcp_workload_identity_provider: '${{ vars.GCP_WIF_PROVIDER }}'
-          gcp_project_id: '${{ vars.GOOGLE_CLOUD_PROJECT }}'
-          gcp_location: '${{ vars.GOOGLE_CLOUD_LOCATION }}'
-          gcp_service_account: '${{ vars.SERVICE_ACCOUNT_EMAIL }}'
+          # gcp_workload_identity_provider: '${{ vars.GCP_WIF_PROVIDER }}'
+          # gcp_project_id: '${{ vars.GOOGLE_CLOUD_PROJECT }}'
+          # gcp_location: '${{ vars.GOOGLE_CLOUD_LOCATION }}'
+          # gcp_service_account: '${{ vars.SERVICE_ACCOUNT_EMAIL }}'
           gemini_api_key: '${{ secrets.GEMINI_API_KEY }}'
-          use_vertex_ai: '${{ vars.GOOGLE_GENAI_USE_VERTEXAI }}'
-          use_gemini_code_assist: '${{ vars.GOOGLE_GENAI_USE_GCA }}'
+          # use_gemini_code_assist: '${{ vars.GOOGLE_GENAI_USE_GCA }}'
           settings: |
             {
               "coreTools": [
@@ -123,3 +122,5 @@ jobs:
             - Execute commands strictly as described in the steps. Do not invent new commands.
             - In no case should you change other pull request that are not the one you are working on. Which can be found by using env.PR_NUMBER
             - Execute each step that is defined in the steps section.
+            - If the actions fails print out the logs.
+            - In no case should you run the code in the pr as this could be malicious code.
